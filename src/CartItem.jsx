@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice.jsx';
 import { money } from './plants.js';
 
+// All amounts are integer cents until the UI formats them as dollars.
+export function calculateTotalCost(item) {
+  return item.price * item.quantity;
+}
+
+export function calculateTotalAmount(cart) {
+  return cart.reduce((total, item) => total + calculateTotalCost(item), 0);
+}
+
+export function calculateTotalQuantity(cart) {
+  return cart.reduce((total, item) => total + item.quantity, 0);
+}
+
 function CartItem({ onContinueShopping }) {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
-  const [checkoutMessage, setCheckoutMessage] = useState('');
-
-  // Unit prices and totals are integer cents; money() formats them for display.
-  const calculateTotalAmount = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  const calculateTotalCost = (item) => {
-    return item.price * item.quantity;
-  };
-
-  const calculateTotalQuantity = () => {
-    return cart.reduce((total, item) => total + item.quantity, 0);
-  };
+  const totalAmount = useMemo(() => calculateTotalAmount(cart), [cart]);
+  const totalQuantity = useMemo(() => calculateTotalQuantity(cart), [cart]);
 
   const handleIncrement = (item) => {
     dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }));
@@ -39,11 +40,11 @@ function CartItem({ onContinueShopping }) {
 
   const handleContinueShopping = (event) => {
     event.preventDefault();
-    onContinueShopping();
+    onContinueShopping(event);
   };
 
   const handleCheckout = () => {
-    setCheckoutMessage('Coming Soon — checkout is not available yet.');
+    window.alert('Coming Soon');
   };
 
   return (
@@ -51,7 +52,7 @@ function CartItem({ onContinueShopping }) {
       <div className="page-heading">
         <span className="eyebrow">YOUR GROWING COLLECTION</span>
         <h1>Your little paradise.</h1>
-        <p aria-live="polite">Total number of plants: <strong>{calculateTotalQuantity()}</strong></p>
+        <p aria-live="polite">Total number of plants: <strong>{totalQuantity}</strong></p>
       </div>
       <div className="cart-layout">
         <div className="cart-items">
@@ -98,15 +99,14 @@ function CartItem({ onContinueShopping }) {
         </div>
         <aside className="summary">
           <h2>Order summary</h2>
-          <div><span>Plants</span><span>{calculateTotalQuantity()}</span></div>
+          <div><span>Plants</span><span>{totalQuantity}</span></div>
           <div className="total total_cart_amount" aria-live="polite">
-            <span>Total Cart Amount</span><strong>{money(calculateTotalAmount())}</strong>
+            <span>Total Cart Amount</span><strong>{money(totalAmount)}</strong>
           </div>
           <p>A little closer to a greener home.</p>
           <button className="get-started-button1" disabled={!cart.length} onClick={handleCheckout}>
             Checkout <span aria-hidden="true">↗</span>
           </button>
-          {checkoutMessage && <p className="notice" role="status">{checkoutMessage}</p>}
           <div className="continue_shopping_btn">
             <button className="continue get-started-button" onClick={handleContinueShopping}>
               ← Continue Shopping

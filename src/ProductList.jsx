@@ -206,7 +206,8 @@ function ProductList({ onHomeClick }) {
     dispatch(addItem(plant));
   };
 
-  const handleContinueShopping = () => {
+  const handleContinueShopping = (event) => {
+    event?.preventDefault();
     setShowCart(false);
     window.location.hash = 'plants';
   };

@@ -6,15 +6,17 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/cart.test.mjs"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "@reduxjs/toolkit": "^2.5.0",
     "react-redux": "^9.2.0"
   },
   "devDependencies": {
+    "esbuild": "0.25.12",
     "vite": "^6.0.0"
   }
 }

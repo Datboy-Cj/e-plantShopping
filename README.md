@@ -27,3 +27,6 @@ https://Datboy-Cj.github.io/e-plantShopping/
 
 ## Source guide
 The required assignment files are in `src/`: `AboutUs.jsx`, `App.css`, `App.jsx`, `CartSlice.jsx`, `ProductList.jsx`, and `CartItem.jsx`. The Redux store and Provider are configured in `src/main.jsx`. Local SVG illustrations are in `public/`.
+
+## Validation
+Run `npm test` to check cart totals, quantity updates, duplicate additions, removals, and invalid quantities against the actual application modules.

@@ -21,6 +21,9 @@ importers:
         specifier: ^9.2.0
         version: 9.3.0(react@19.3.0)(redux@5.0.1)
     devDependencies:
+      esbuild:
+        specifier: 0.25.12
+        version: 0.25.12
       vite:
         specifier: ^6.0.0
         version: 6.4.3
