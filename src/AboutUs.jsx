@@ -1,0 +1,2 @@
+import React from 'react';
+export default function AboutUs(){return <div className="about"><span className="eyebrow">ROOTED IN A LOVE OF GREEN</span><h2>A little nature.<br/>A lot of possibility.</h2><p>At Paradise Nursery, we believe every home deserves a little green. We bring together beautiful houseplants, from easygoing everyday companions to statement foliage, to help you create a space that feels alive.</p><p>Explore our thoughtfully selected plants and find your next growing companion. Your little paradise starts here.</p></div>}
