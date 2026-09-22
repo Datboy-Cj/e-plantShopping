@@ -1,4 +1,4 @@
-# Paradise Nursery
+# e-plantShopping — Paradise Nursery
 
 A React and Redux shopping application for an online houseplant nursery.
 
@@ -23,7 +23,7 @@ npm run build
 ```
 
 ## Live application
-https://Datboy-Cj.github.io/paradise-nursery/
+https://Datboy-Cj.github.io/e-plantShopping/
 
 ## Source guide
 The required assignment files are in `src/`: `AboutUs.jsx`, `App.css`, `App.jsx`, `CartSlice.jsx`, `ProductList.jsx`, and `CartItem.jsx`. The Redux store and Provider are configured in `src/main.jsx`. Local SVG illustrations are in `public/`.
