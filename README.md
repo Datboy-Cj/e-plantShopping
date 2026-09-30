@@ -30,3 +30,13 @@ The required assignment files are in `src/`: `AboutUs.jsx`, `App.css`, `App.jsx`
 
 ## Validation
 Run `npm test` to check cart totals, quantity updates, duplicate additions, removals, and invalid quantities against the actual application modules.
+
+## Automated checks
+
+Use Node 24 and pnpm 11.28.2. Run `pnpm install --frozen-lockfile`, `pnpm test`, and `pnpm build`.
+For browser checks, run `pnpm exec playwright install chromium webkit`, then `pnpm test:browser`.
+The browser suite checks desktop Chromium, WebKit, and a mobile Chromium viewport.
+It verifies cart totals, quantity controls, deletion, empty-cart behavior, the checkout notice, and navigation.
+Use `pnpm test:browser:report` to open the report.
+
+GitHub Actions runs these checks on pushes and pull requests. Dependabot proposes weekly package updates and monthly GitHub Actions updates; updates are not automatically merged.
