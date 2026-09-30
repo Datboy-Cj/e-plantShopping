@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
-    "esbuild": "0.25.12",
+    "esbuild": "0.28.2",
     "vite": "^6.0.0"
   },
   "packageManager": "pnpm@11.28.2"
