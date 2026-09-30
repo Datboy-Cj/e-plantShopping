@@ -7,7 +7,9 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --test tests/cart.test.mjs"
+    "test": "node --test tests/cart.test.mjs",
+    "test:browser": "playwright test",
+    "test:browser:report": "playwright show-report"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
@@ -16,7 +18,9 @@
     "react-redux": "^9.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "esbuild": "0.25.12",
     "vite": "^6.0.0"
-  }
+  },
+  "packageManager": "pnpm@11.28.2"
 }
